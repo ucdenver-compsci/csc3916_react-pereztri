@@ -61,27 +61,27 @@ class Movie extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps);
-    return {
-        selectedMovie: state.movie.selectedMovie, 
-        movieId: ownProps.match.params.movieId
-    }
-}
-
-export default withRouter(connect(mapStateToProps)(Movie));
-
-// function Movie(props) {
-//     const [selectedMovie] = useState(props.selectedMovie);
-//     const params = useParams();
-//     const movieId = params.movieId;
-//     console.log(movieId);
-//     const dispatch = useDispatch();
-//     if (selectedMovie == null) {
-//         dispatch(fetchMovie(movieId));
+// const mapStateToProps = (state, ownProps) => {
+//     console.log(ownProps);
+//     return {
+//         selectedMovie: state.movie.selectedMovie, 
+//         movieId: ownProps.match.params.movieId
 //     }
-
-//     return (<MovieDetail movieId={movieId} />)
 // }
 
-// export default Movie;
+// export default withRouter(connect(mapStateToProps)(Movie));
+
+function Movie(props) {
+    const [selectedMovie] = useState(props.selectedMovie);
+    const params = useParams();
+    const movieId = params.movieId;
+    console.log(movieId);
+    const dispatch = useDispatch();
+    if (selectedMovie == null) {
+        dispatch(fetchMovie(movieId));
+    }
+
+    return (<MovieDetail movieId={movieId} />)
+}
+
+export default Movie;
