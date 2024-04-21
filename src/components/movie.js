@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, ListGroup, ListGroupItem, Image, Form, Button } from 'react-bootstrap';
+import { Card, ListGroup, ListGroupItem, Form, Button } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
 import { useParams } from 'react-router-dom';
