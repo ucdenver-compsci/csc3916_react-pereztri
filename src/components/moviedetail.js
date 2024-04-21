@@ -8,9 +8,12 @@ import { Image } from 'react-bootstrap';
 class MovieDetail extends Component {
 
     componentDidMount() {
-        const {dispatch} = this.props;
-        if (this.props.selectedMovie == null) {
-            dispatch(fetchMovie(this.props.movieId));
+        const {dispatch, movieId} = this.props;
+        if (this.props.selectedMovie) {
+            dispatch(fetchMovie(movieId)).catch(error => {
+                console.error("Failed to fetch movie details", error);
+
+            });
         }
     }
 
