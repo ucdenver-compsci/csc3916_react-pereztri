@@ -54,11 +54,17 @@ class MovieDetail extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        selectedMovie: state.movie.selectedMovie
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         selectedMovie: state.movie.selectedMovie
+//     }
+// }
 
-export default connect(mapStateToProps)(MovieDetail);
+// export default connect(mapStateToProps)(MovieDetail);
 
+const mapStateToProps = (state, ownProps) => ({
+    selectedMovie: state.movie.selectedMovie,
+    movieId: ownProps.match.params.movieId // Accessing movieId from route parameters
+});
+
+export default withRouter(connect(mapStateToProps)(MovieDetail)); // Wrap component with withRouter
