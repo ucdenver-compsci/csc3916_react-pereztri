@@ -6,7 +6,6 @@ import {Image, Nav} from 'react-bootstrap';
 import { Carousel } from 'react-bootstrap';
 import { BsStarFill} from 'react-icons/bs'
 import {LinkContainer} from 'react-router-bootstrap';
-import { Glyphicon } from 'react-bootstrap'
 
 class MovieList extends Component {
     constructor(props) {
