@@ -45,7 +45,7 @@ class Movie extends Component {
             }
             return (
                 <Card>
-                    <Card.Heading>Movie Detail</Card.Heading>
+                    <Card.Header>Movie Detail</Card.Header>
                     <Card.Body><Image className="image" src={currentMovie.imageUrl} thumbnail /></Card.Body>
                     <ListGroup>
                         <ListGroupItem>{currentMovie.title}</ListGroupItem>
