@@ -9,6 +9,7 @@ function moviesFetched(movies) {
     }
 }
 
+//Single Movie
 function movieFetched(movie) {
     return {
         type: actionTypes.FETCH_MOVIE,
@@ -29,6 +30,7 @@ export function setMovie(movie) {
     }
 }
 
+//Do I use movieId or title? Should be using movieId
 export function fetchMovie(movieId) {
     return dispatch => {
         return fetch(`${env.REACT_APP_API_URL}/movies/${movieId}?reviews=true`, {
