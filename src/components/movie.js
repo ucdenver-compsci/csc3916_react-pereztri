@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Glyphicon, Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { fetchMovie } from "../actions/movieActions";
 import MovieDetail from "../components/moviedetail"
+import { BsStarFill } from 'react-icons/bs';
 
 // support routing
 
@@ -32,7 +33,8 @@ class Movie extends Component {
             return reviews.map((review, i) =>
                 <p key={i}>
                     <b>{review.username}</b> {review.review}
-                    <Glyphicon glyph={'star'} /> {review.rating}
+                    {/* <Glyphicon glyph={'star'} /> {review.rating} */}
+                    <BsStarFill /> {review.rating}
                 </p>
             )
         }
@@ -48,7 +50,8 @@ class Movie extends Component {
                     <ListGroup>
                         <ListGroupItem>{currentMovie.title}</ListGroupItem>
                         <ListGroupItem><ActorInfo actors={currentMovie.actors} /></ListGroupItem>
-                        <ListGroupItem><h4><Glyphicon glyph={'star'}/> {currentMovie.avgRating} </h4></ListGroupItem>
+                        {/* <ListGroupItem><h4><Glyphicon glyph={'star'}/> {currentMovie.avgRating} </h4></ListGroupItem> */}
+                        <ListGroupItem><h4><BsStarFill/> {currentMovie.avgRating} </h4></ListGroupItem>
                     </ListGroup>
                     <Panel.Body><ReviewInfo reviews={currentMovie.reviews} /></Panel.Body>
                 </Panel>
