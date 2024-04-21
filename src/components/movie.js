@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Card, ListGroup, ListGroupItem, Image, Form, Button } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
 import { useParams } from 'react-router-dom';
@@ -44,17 +44,17 @@ class Movie extends Component {
                 return <div>Loading...</div>;
             }
             return (
-                <Panel>
-                    <Panel.Heading>Movie Detail</Panel.Heading>
-                    <Panel.Body><Image className="image" src={currentMovie.imageUrl} thumbnail /></Panel.Body>
+                <Card>
+                    <Card.Heading>Movie Detail</Card.Heading>
+                    <Card.Body><Image className="image" src={currentMovie.imageUrl} thumbnail /></Card.Body>
                     <ListGroup>
                         <ListGroupItem>{currentMovie.title}</ListGroupItem>
                         <ListGroupItem><ActorInfo actors={currentMovie.actors} /></ListGroupItem>
                         {/* <ListGroupItem><h4><Glyphicon glyph={'star'}/> {currentMovie.avgRating} </h4></ListGroupItem> */}
                         <ListGroupItem><h4><BsStarFill/> {currentMovie.avgRating} </h4></ListGroupItem>
                     </ListGroup>
-                    <Panel.Body><ReviewInfo reviews={currentMovie.reviews} /></Panel.Body>
-                </Panel>
+                    <Card.Body><ReviewInfo reviews={currentMovie.reviews} /></Card.Body>
+                </Card>
             );
         }
 
