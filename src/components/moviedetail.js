@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { BsStarFill } from 'react-icons/bs'
 import { Image } from 'react-bootstrap';
-import { withRouter } from 'react-router-dom'; // Import withRouter
-
 
 class MovieDetail extends Component {
 
@@ -56,17 +54,11 @@ class MovieDetail extends Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         selectedMovie: state.movie.selectedMovie
-//     }
-// }
+const mapStateToProps = state => {
+    return {
+        selectedMovie: state.movie.selectedMovie
+    }
+}
 
-// export default connect(mapStateToProps)(MovieDetail);
+export default connect(mapStateToProps)(MovieDetail);
 
-const mapStateToProps = (state, ownProps) => ({
-    selectedMovie: state.movie.selectedMovie,
-    movieId: ownProps.match.params.movieId // Accessing movieId from route parameters
-});
-
-export default withRouter(connect(mapStateToProps)(MovieDetail)); // Wrap component with withRouter
