@@ -15,8 +15,10 @@ class MovieDetail extends Component {
     }
 
     render() {
+        let movie = Array.isArray(this.props.selectedMovie) ? this.props.selectedMovie[0] : this.props.selectedMovie;
+
         const DetailInfo = () => {
-            if (!this.props.selectedMovie) {
+            if (!movie) {
                 return <div>Loading....</div>
             }
 
