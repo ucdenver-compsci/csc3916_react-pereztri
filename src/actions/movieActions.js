@@ -75,3 +75,31 @@ export function fetchMovies() {
         }).catch((e) => console.log(e));
     }
 }
+
+
+
+export function postReview(reviewData) {
+    return dispatch => {
+        return fetch(`${process.env.REACT_APP_API_URL}/reviews`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(reviewData)
+        })
+        .then(response => response.json())
+        .then(json => {
+            if (json.success) {
+                alert('Review submitted successfully!');
+                // Optionally refresh movie data or dispatch another action to update the UI
+            } else {
+                alert('Failed to submit review');
+            }
+        })
+        .catch(e => {
+            console.log('Error submitting review:', e);
+            alert('Error submitting review');
+        });
+    };
+}
