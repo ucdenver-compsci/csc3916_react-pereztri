@@ -84,7 +84,7 @@ export function postReview(reviewData) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`  // Make sure token is retrieved correctly
+                'Authorization': localStorage.getItem('token')
             },
             body: JSON.stringify(reviewData)
         })
