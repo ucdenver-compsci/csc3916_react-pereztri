@@ -84,22 +84,20 @@ export function postReview(reviewData) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}` // Ensure the token is correctly appended
             },
             body: JSON.stringify(reviewData)
         })
-        .then(response => response.json())
-        .then(json => {
-            if (json.success) {
-                alert('Review submitted successfully!');
-                // Optionally refresh movie data or dispatch another action to update the UI
-            } else {
-                alert('Failed to submit review');
+        .then(response => response.json().then(json => ({ status: response.status, body: json })))
+        .then(({ status, body }) => {
+            if (status >= 400) {
+                throw new Error(body.message || "Failed to submit review");
             }
+            alert('Review submitted successfully!');
         })
         .catch(e => {
-            console.log('Error submitting review:', e);
-            alert('Error submitting review');
+            console.error('Error submitting review:', e);
+            alert(`Error submitting review: ${e.message}`);
         });
     };
 }
