@@ -116,7 +116,7 @@ export function postReview(reviewData) {
         .then(response => response.json())
         .then(json => {
             if (json.success) {
-                alert('Review submitted successfully! Thank you for your submission.');
+                alert('Review submitted successfully! Thank you for your submission. Your review will now appear below...');
                 dispatch(fetchMovie(reviewData.movieId));
             } else {
                 alert('An error occured. Failed to submit review.');
