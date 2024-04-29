@@ -15,6 +15,15 @@ class MovieDetail extends Component {
         }
     }
 
+
+    //To dispatch new review entered on the React page
+    componentDidUpdate(prevProps) {
+        if (prevProps.selectedMovie !== this.props.selectedMovie) 
+        {
+            console.log('Movie data updated.');
+        }
+    }
+
     render() {
         const DetailInfo = () => {
             if (!this.props.selectedMovie) {

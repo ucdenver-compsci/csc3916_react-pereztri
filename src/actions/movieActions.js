@@ -76,8 +76,35 @@ export function fetchMovies() {
     }
 }
 
+//submitting a review and the review appears after you refresh the page
+// export function postReview(reviewData) {
+//     return dispatch => {
+//         return fetch(`${process.env.REACT_APP_API_URL}/reviews`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': localStorage.getItem('token')
+//             },
+//             body: JSON.stringify(reviewData)
+//         })
+//         .then(response => response.json())
+//         .then(json => {
+//             if (json.success) {
+//                 alert('Review submitted successfully! Thank you for your submission. Your review will appear if you refresh the page.');
+//             } else {
+//                 alert('An error occured. Failed to submit review.');
+//             }
+//         })
+//         .catch(e => {
+//             console.log('Error submitting the review:', e);
+//             alert(`Error submitting the review: ${e.message}`);
+//         });
+//     };
+// }
+
+//submitting a review and the review appears right after
 export function postReview(reviewData) {
-    return dispatch => {
+    return (dispatch, getState) => {
         return fetch(`${process.env.REACT_APP_API_URL}/reviews`, {
             method: 'POST',
             headers: {
@@ -89,7 +116,8 @@ export function postReview(reviewData) {
         .then(response => response.json())
         .then(json => {
             if (json.success) {
-                alert('Review submitted successfully! Thank you for your submission. Your review will appear if you refresh the page.');
+                alert('Review submitted successfully! Thank you for your submission.');
+                dispatch(fetchMovie(reviewData.movieId));
             } else {
                 alert('An error occured. Failed to submit review.');
             }
