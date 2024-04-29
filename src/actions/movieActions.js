@@ -76,8 +76,6 @@ export function fetchMovies() {
     }
 }
 
-
-
 export function postReview(reviewData) {
     return dispatch => {
         return fetch(`${process.env.REACT_APP_API_URL}/reviews`, {
@@ -88,23 +86,17 @@ export function postReview(reviewData) {
             },
             body: JSON.stringify(reviewData)
         })
-        .then(response => {
-            if (!response.ok) {
-                return response.text().then(text => { throw new Error(text) });  // Handling non-JSON responses
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(json => {
             if (json.success) {
-                alert('Review submitted successfully!');
+                alert('Review submitted successfully! Thank you for your submission. Your review will appear if you refresh the page.');
             } else {
-                throw new Error('Failed to submit review');
+                alert('An error occured. Failed to submit review.');
             }
         })
         .catch(e => {
-            console.log('Error submitting review:', e);
-            alert(`Error submitting review: ${e.message}`);
+            console.log('Error submitting the review:', e);
+            alert(`Error submitting the review: ${e.message}`);
         });
     };
 }
-
